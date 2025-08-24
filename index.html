@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>えふじ - 自己紹介</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* カスタムスタイル */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ヒーローセクションのオーバーレイ */
+        .hero-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ac80ff;
+            opacity: 0.5; /* オーバーレイの透明度 */
+            z-index: 1;
+        }
+
+        /* スクロールダウンアニメーション */
+        .scroll-down {
+            animation: fadeInOut 2.5s infinite;
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(10px); }
+        }
+        
+        /* Discordフリップカードのスタイル */
+        .flip-card {
+            perspective: 1000px; /* 3D効果のための視点 */
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        /* is-flippedクラスが付与された時に内側を回転 */
+        .flip-card.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari用 */
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+            background-color: #5865F2; /* Discordのブランドカラー */
+            color: white;
+        }
+
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <header class="bg-white/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-xl font-bold text-[#ac80ff]">efuji</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-600 hover:text-[#ac80ff] transition-colors duration-300">About Me</a>
+                <a href="#sns" class="text-gray-600 hover:text-[#ac80ff] transition-colors duration-300">SNS</a>
+            </nav>
+            <button id="menu-btn" class="md:hidden focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">About Me</a>
+            <a href="#sns" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-100">SNS</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="home" class="relative h-screen flex items-center justify-center text-center bg-cover bg-center">
+            <div class="hero-overlay"></div>
+            <div class="relative z-10 p-6">
+                <h1 class="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">AI活かして「集中」を</h1>
+                <div class="mt-4 inline-block bg-white px-6 py-2 rounded-lg shadow-md">
+                     <p class="text-3xl md:text-4xl font-bold text-[#8a63d1]">えふじ</p>
+                </div>
+                <p class="mt-4 text-lg md:text-xl text-white drop-shadow-md">Google AI 学生 アンバサダー</p>
+            </div>
+            <div class="scroll-down absolute bottom-10 left-0 right-0 w-fit mx-auto z-10 text-white">
+                <span class="text-sm">Scroll Down</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 md:py-28 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-12 border-b-4 border-[#ac80ff] inline-block pb-2">About Me</h2>
+                <div class="max-w-4xl mx-auto text-left bg-white p-8 md:p-12 rounded-xl shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 mb-8">
+                        <div class="flex flex-col flex-shrink-0 gap-2">
+                            <img src="images/icon.jpg" alt="えふじのプロフィール画像" class="w-44 h-44 rounded-full object-cover border-4 border-[#555555] shadow-xl">
+                            <p class="text-2xl font-bold text-gray-800">えふじ</p>
+                            <p class="text-lg text-gray-500">efuji</p>
+                        </div>
+                        <div class="flex-1 w-full text-center md:text-left">
+                            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                                <div class="flex items-start">
+                                    <span class="font-bold text-[#ac80ff] w-24 flex-shrink-0">出身地</span>
+                                    <span>茨城県</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="font-bold text-[#ac80ff] w-24 flex-shrink-0">大学</span>
+                                    <span>筑波大学大学院 情報理工学位プログラム M2</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="font-bold text-[#ac80ff] w-24 flex-shrink-0">専門</span>
+                                    <span>HCI（ヒューマン・コンピュータ・インタラクション）</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="font-bold text-[#ac80ff] w-24 flex-shrink-0">研究内容</span>
+                                    <span>聴覚フィードバックを活用したコミュニケーション支援</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="font-bold text-[#ac80ff] w-24 flex-shrink-0">趣味</span>
+                                    <span>サイクリング、模型製作</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span class="font-bold text-[#ac80ff] w-24 flex-shrink-0">バイト</span>
+                                    <span>スーパーマーケット（品出し、接客）</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-gray-200 text-left">
+                        <p class="text-gray-700 leading-relaxed">
+                            大学のアジャイルPBL学習プログラム（<a href="https://bizsysd.enpit.jp/" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: #7e38ff;">enPiT</a>）で学生メンターを務めています！<br>
+                            チームビルディングや開発プロセスに<strong class="text-[#ac80ff]">AIを活用できないか</strong>模索しています！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-12 border-b-4 border-[#ac80ff] inline-block pb-2">Research Achievements</h2>
+                
+                <div class="max-w-4xl mx-auto space-y-8 text-left">
+
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <p class="text-sm text-gray-500">情報処理学会 論文誌ジャーナル</p>
+                        <h3 class="text-xl font-bold my-1">
+                            <a href="https://drive.google.com/file/d/11sMD-imif5FE5rCi2KEYjsq2Tq5HrTR8/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-[#ac80ff] transition-colors duration-300">
+                                変換聴覚フィードバックが話者の発話特性に与える影響の調査
+                            </a>
+                        </h3>
+                        <p class="text-md text-gray-600">推薦論文</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <p class="text-sm text-gray-500">情報処理学会 インタラクション2025</p>
+                        <h3 class="text-xl font-bold my-1">
+                            <a href="https://www.interaction-ipsj.org/proceedings/2025/data/pdf/2B-32.pdf" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-[#ac80ff] transition-colors duration-300">
+                                カメラ映像の特徴点追跡を用いた動的音高変化による方向提示手法の提案
+                            </a>
+                        </h3>
+                        <p class="text-md text-gray-600">デモ発表、共同研究</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <p class="text-sm text-gray-500">情報処理学会 第211回ヒューマンコンピュータインタラクション研究発表会</p>
+                        <h3 class="text-xl font-bold my-1">
+                            <a href="https://drive.google.com/file/d/1-8a9SbuG8TifvTmzMhLqm1-tS0Yx1Jm1/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-[#ac80ff] transition-colors duration-300">
+                                	ピッチとラウドネスを増減させた変換聴覚フィードバックおよび遅延聴覚フィードバックの発話明瞭度への影響調査
+                            </a>
+                        </h3>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                        <p class="text-sm text-gray-500">情報処理学会 コラボレーションとネットワークサービス ワークショップ2023</p>
+                        <h3 class="text-xl font-bold my-1">
+                            <a href="https://drive.google.com/file/d/1b4w0oG6aTDrN058dCGl1LYfkC4hOoqkt/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-[#ac80ff] transition-colors duration-300">
+                                変換聴覚フィードバックが話者の発話特性に与える影響の調査
+                            </a>
+                        </h3>
+                        <p class="text-md text-gray-600">査読あり、ベストペーパー賞</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <section id="sns" class="py-20 md:py-28">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-4 border-b-4 border-[#ac80ff] inline-block pb-2">SNS</h2>
+                <p class="text-gray-600 mb-16">X、Instagram、Discordだと反応率高いです</p>
+
+                <div class="flex flex-wrap justify-center items-center gap-8">
+
+                    <a href="https://x.com/aktkszk000" target="_blank" rel="noopener noreferrer" class="block w-40 sm:w-48 p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 shadow-gray-900/20">
+                        <i class="fab fa-x-twitter text-4xl text-black"></i>
+                        <h3 class="font-bold text-lg mt-4">X</h3>
+                        <p class="text-sm text-gray-500 mt-1">常用個人アカウント</p>
+                    </a>
+
+                    <a href="https://www.instagram.com/aktkszk000/" target="_blank" rel="noopener noreferrer" class="block w-40 sm:w-48 p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 shadow-pink-500/20">
+                        <i class="fab fa-instagram text-4xl text-pink-500"></i>
+                        <h3 class="font-bold text-lg mt-4">Instagram</h3>
+                        <p class="text-sm text-gray-500 mt-1">閲覧用</p>
+                    </a>
+
+                    <a href="https://github.com/aktkszk000" target="_blank" rel="noopener noreferrer" class="block w-40 sm:w-48 p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 shadow-gray-900/20">
+                         <i class="fab fa-github text-4xl text-black"></i>
+                        <h3 class="font-bold text-lg mt-4">GitHub</h3>
+                        <p class="text-sm text-gray-500 mt-1">稼働率低め</p>
+                    </a>
+
+                    <a href="https://aktkszk000.hatenablog.com/" target="_blank" rel="noopener noreferrer" class="block w-40 sm:w-48 p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 shadow-gray-900/20">
+                         <i class="fas fa-pen-nib text-4xl text-black"></i>
+                        <h3 class="font-bold text-lg mt-4">Hatena Blog</h3>
+                        <p class="text-sm text-gray-500 mt-1">気ままに更新</p>
+                    </a>
+                    
+                    <div class="flip-card w-40 sm:w-48 h-44 cursor-pointer" tabindex="0">
+                        <div class="flip-card-inner rounded-xl shadow-lg shadow-indigo-500/20">
+                            <div class="flip-card-front bg-white">
+                                <i class="fab fa-discord text-4xl text-indigo-500"></i>
+                                <h3 class="font-bold text-lg mt-4">Discord</h3>
+                                <p class="text-sm text-gray-500 mt-1">(Click or Tap)</p>
+                            </div>
+                            <div class="flip-card-back p-4">
+                                <p class="text-sm font-semibold">表示名:</p>
+                                <p class="text-md mb-2">efuji_筑波大学</p>
+                                <p class="text-sm font-semibold">ユーザーID:</p>
+                                <p class="text-md font-mono">aktkszk000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-[#ac80ff] text-white text-center py-6">
+        <div class="container mx-auto px-6">
+            <p>&copy; 2025 efuji. All rights reserved.</p>
+            <p>このページの内容は予告なく変更されることがあります。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- モバイルメニューのトグル機能 ---
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- スムーズスクロール機能 ---
+            // ナビゲーションリンクを取得
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault(); // デフォルトのアンカー動作をキャンセル
+
+                    let targetId = this.getAttribute('href');
+                    let targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        // ヘッダーの高さを考慮（ヘッダーが固定されているため）
+                        let headerOffset = document.querySelector('header').offsetHeight;
+                        let elementPosition = targetElement.getBoundingClientRect().top;
+                        let offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                        
+                        // モバイルメニューが開いている場合は閉じる
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            // --- Discordカードのクリック（タップ）機能 ---
+            const discordCard = document.querySelector('.flip-card');
+
+            discordCard.addEventListener('click', () => {
+                // is-flippedクラスの有無を切り替える
+                discordCard.classList.toggle('is-flipped');
+            });
+        });
+    </script>
+</body>
+</html>
